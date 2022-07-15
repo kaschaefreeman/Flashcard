@@ -1,0 +1,80 @@
+import React, { useEffect, useMemo, useState } from "react";
+import { createDeck, updateDeck } from "../utils/api/index";
+import { useHistory, useRouteMatch } from "react-router-dom";
+
+const DeckForm = ({ deck }) => {
+  const initialFormData = { name: "", description: "" };
+  const [formData, setFormData] = useState({ ...initialFormData });
+  const history = useHistory();
+  const { path } = useRouteMatch();
+  const abortController = new AbortController();
+
+  if (deck)
+    useEffect(() => {
+      setFormData({ ...initialFormData, ...deck });
+    }, [deck]);
+
+  console.log(initialFormData, formData);
+
+  const handleFormChange = ({ target }) => {
+    setFormData({
+      ...formData,
+      [target.name]: target.value,
+    });
+  };
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    try {
+      const apiCall = deck
+        ? updateDeck(formData, abortController.signal)
+        : createDeck(formData, abortController.signal);
+      const response = await apiCall;
+      (await deck)
+        ? history.push(`/decks/${response.id}`)
+        : history.push(`${response.id}`);
+    } catch (error) {
+      throw error;
+    }
+  };
+
+  const handleCancel = (event) => {
+    event.preventDefault();
+    path === "/decks/:deckId/edit" ? history.goBack() : history.push("/");
+  };
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <label for="name">Name:</label>
+      <br />
+      <input
+        type="text"
+        id="name"
+        name="name"
+        className="form-control"
+        value={formData.name}
+        onChange={handleFormChange}
+      />
+      <br />
+      <label for="description">Description</label>
+      <br />
+      <textarea
+        rows="3"
+        type="text"
+        id="description"
+        name="description"
+        className="form-control"
+        value={formData.description}
+        onChange={handleFormChange}
+      />
+      <br />
+      <button className="btn btn-secondary" onClick={() => handleCancel}>
+        Cancel
+      </button>
+      <button className="btn btn-primary m-2" type="Submit">
+        Submit
+      </button>
+    </form>
+  );
+};
+
+export default DeckForm;

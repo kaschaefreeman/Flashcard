@@ -1,0 +1,19 @@
+span {
+  vertical-align: bottom;
+}
+.material-symbols-outlined {
+  font-variation-settings: "FILL" 1, "wght" 400, "GRAD" 0, "opsz" 48;
+}
+h2 {
+  margin: 20px 0 20px 0;
+}
+section {
+  margin: 20px 0 20px 0;
+}
+label {
+  font-weight: bold;
+  margin: 5px 0 15px 0;
+}
+textarea {
+  overflow-y: auto;
+}
