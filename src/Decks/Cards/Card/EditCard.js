@@ -4,11 +4,16 @@ import CardForm from "../../../Forms/CardForm";
 import NavBar from "../../NavBar";
 import { readDeck, readCard } from "../../../utils/api";
 
+/**
+ * Component renders the Edit Card page.
+ *  It Loads the card form with the current cards information
+ */
 const EditCard = () => {
   const [currentDeck, setCurrentDeck] = useState([]);
-  const [currentCard, setCurrentCard] = useState({})
+  const [currentCard, setCurrentCard] = useState({});
   const { deckId, cardId } = useParams();
 
+  //On mount load current deck and card to edit
   useEffect(() => {
     const abortController = new AbortController();
     const loadDeck = async () => {
@@ -26,7 +31,7 @@ const EditCard = () => {
     const loadCard = async () => {
       try {
         const response = await readCard(cardId, abortController.signal);
-        setCurrentCard(response)
+        setCurrentCard(response);
       } catch (error) {
         if (error.name === "AbortError") {
           console.log("Aborted");
@@ -35,17 +40,21 @@ const EditCard = () => {
         }
       }
     };
-    loadCard()
+    loadCard();
     loadDeck();
     return () => {
       console.info("aborting");
       abortController.abort();
     };
   }, []);
+
   return (
     <>
+      <div>
+        <NavBar deck={currentDeck} card={currentCard} />
+      </div>
       <h2>Edit Card</h2>
-      <CardForm card={currentCard}/>
+      <CardForm card={currentCard} />
     </>
   );
 };

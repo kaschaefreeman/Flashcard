@@ -4,12 +4,16 @@ import DeckForm from "../../Forms/DeckForm";
 import NavBar from "../NavBar";
 import { readDeck } from "../../utils/api";
 
+/**
+ * Component renders Edit Deck Page.
+ * It loads the deck form with the selected deck's information
+ */
 const EditDeck = () => {
   const [currentDeck, setCurrentDeck] = useState({});
   const { deckId } = useParams();
 
+  //On mount, load current deck
   useEffect(() => {
-    console.log("mounted deck");
 
     const abortController = new AbortController();
     setCurrentDeck([]);
@@ -26,7 +30,6 @@ const EditDeck = () => {
       }
     };
     loadDeck();
-    console.log(deckId);
     return () => {
       console.info("aborting");
       abortController.abort();

@@ -1,14 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { listDecks } from "../utils/api/index";
-import { Link, useHistory } from "react-router-dom";
-import DeleteButton from "../Forms/DeleteButton" 
-//component that renders a list of decks in card format.  Will be displayed on Home route "/"
+import { Link } from "react-router-dom";
+import DeleteButton from "../Forms/DeleteButton";
+
+/**
+ * Component that renders a list of decks in card format
+ */
 function DeckCards() {
   const [decks, setDecks] = useState([]);
-  const history = useHistory();
-  //fetch decks array when component mounts making call to api with function from utils
+
+  //fetch decks array when component mounts making call to api
   useEffect(() => {
-    console.log("mounted");
     const abortController = new AbortController();
 
     const loadDecks = async () => {
@@ -32,7 +34,7 @@ function DeckCards() {
   }, []);
 
   //helper function renders the view, study, and delete Link buttons at bottom of deck's info card
-  const cardButtons = (deck, { id } = deck ) => {
+  const cardButtons = (deck, { id } = deck) => {
     return (
       <React.Fragment>
         <div className="container ">
@@ -49,7 +51,7 @@ function DeckCards() {
               </Link>
             </div>
             <div className="col">
-              <DeleteButton objectToDelete={deck}/>
+              <DeleteButton objectToDelete={deck} />
             </div>
           </div>
         </div>
@@ -78,4 +80,3 @@ function DeckCards() {
 }
 
 export default DeckCards;
-

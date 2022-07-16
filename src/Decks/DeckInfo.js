@@ -5,15 +5,18 @@ import NavBar from "./NavBar";
 import DeleteButton from "../Forms/DeleteButton";
 import CardList from "./CardList";
 
+/**
+ * Component renders the decks information on route "/decks/:deckId".
+ * Displays the deck info with list of cards below
+ */
 const DeckInfo = () => {
   const [currentDeck, setCurrentDeck] = useState({});
   const { deckId } = useParams();
 
   const { name, description, id } = currentDeck;
 
-
+  //On Mount load deck
   useEffect(() => {
-    console.log("mounted deck");
     const abortController = new AbortController();
     setCurrentDeck([]);
     const loadDeck = async () => {
@@ -33,10 +36,9 @@ const DeckInfo = () => {
       console.info("aborting");
       abortController.abort();
     };
-
-    
   }, []);
 
+  //Format deck buttons
   const deckButtons = (
     <>
       <div className="row">
@@ -62,6 +64,7 @@ const DeckInfo = () => {
     </>
   );
 
+  //Render page with Nav bar, deck info, and list of cards
   return (
     <>
       <div>

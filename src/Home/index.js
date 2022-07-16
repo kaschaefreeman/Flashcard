@@ -1,23 +1,22 @@
 import React from "react";
-import { Route, Switch } from "react-router-dom"
+import { Route, Switch } from "react-router-dom";
 
 import "./index.css";
 import Header from "./Header";
 import HomeView from "./HomeView";
 import CreateDeck from "../Decks/New/CreateDeck";
 import DeckInfo from "../Decks/DeckInfo";
-import StudyDeck from "../Decks/Study/StudyDeck"
+import StudyDeck from "../Decks/Study/StudyDeck";
 import EditDeck from "../Decks/Edit/EditDeck";
 import NotFound from "./NotFound";
 import EditCard from "../Decks/Cards/Card/EditCard";
 import AddCard from "../Decks/Cards/AddCard";
 
 function Layout() {
-
   return (
     <>
       <Header />
-      {/* TODO: Implement the screen starting here */}
+
       <div className="container">
         <Switch>
           <Route exact={true} path="/">
@@ -41,7 +40,7 @@ function Layout() {
           </Route>
 
           <Route exact={true} path="/decks/:deckId/cards/new">
-            <AddCard/>
+            <AddCard />
           </Route>
 
           <Route exact={true} path="/decks/:deckId/cards/:cardId/edit">

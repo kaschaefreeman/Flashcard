@@ -2,12 +2,15 @@ import React from "react";
 import { useHistory, useRouteMatch } from "react-router-dom";
 import { deleteCard, deleteDeck } from "../utils/api";
 
+/**
+ * Component renders a delete button.
+ * Can be used to delete a card or deck instance.
+ */
 const DeleteButton = ({ objectToDelete = {} }) => {
   const history = useHistory();
   const abortController = new AbortController();
   const { path } = useRouteMatch();
-  console.log(path);
-  console.log(objectToDelete)
+
   /**
    * Deletes the card or deck from the api.
    * checks if theres is a key of deckId which is only in the card instance.
@@ -22,8 +25,10 @@ const DeleteButton = ({ objectToDelete = {} }) => {
   const handleDelete = async ({ id, deckId }) => {
     const deleteObject = deckId ? "card" : "deck";
     if (
-      window.confirm(`Delete this ${deleteObject}?\n\nYou will not be able to recover it.`)
-      ) {
+      window.confirm(
+        `Delete this ${deleteObject}?\n\nYou will not be able to recover it.`
+      )
+    ) {
       try {
         const deleteFunction = deckId
           ? deleteCard(id, abortController.signal)
@@ -40,6 +45,7 @@ const DeleteButton = ({ objectToDelete = {} }) => {
       }
     }
   };
+
   return (
     <button
       className="btn btn-danger m-1"

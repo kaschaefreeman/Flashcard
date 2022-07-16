@@ -1,16 +1,18 @@
 import React, { useEffect, useState } from "react";
 import { createCard, updateCard } from "../utils/api/index";
-import { useHistory, useParams, useRouteMatch } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 
+/**
+ * Component renders the form to edit and add a card
+ */
 const CardForm = ({ card }) => {
   const initialFormData = { front: "", back: "" };
   const [formData, setFormData] = useState({ ...initialFormData });
   const history = useHistory();
-  const { path} = useRouteMatch();
-  const {deckId} = useParams()
+  const { deckId } = useParams();
   const abortController = new AbortController();
- 
-  console.log(deckId)
+
+  //If card given update the form data to include card's info
   if (card)
     useEffect(() => {
       setFormData({ ...initialFormData, ...card });
@@ -22,23 +24,25 @@ const CardForm = ({ card }) => {
       [target.name]: target.value,
     });
   };
+
+  //On submit, check if card was given as prop.
+  //If so, update the given card, else create the new card
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
       const response = card
         ? updateCard(formData, abortController.signal)
-        : createCard(deckId,formData, abortController.signal);
-        history.push(`/decks/${deckId}`);
-      return await response
+        : createCard(deckId, formData, abortController.signal);
+      history.push(`/decks/${deckId}`);
+      return await response;
     } catch (error) {
       throw error;
     }
   };
 
   const handleCancel = (event) => {
-    console.log(event)
     event.preventDefault();
-   history.push(`/decks/${deckId}`)
+    history.push(`/decks/${deckId}`);
   };
 
   return (

@@ -1,7 +1,11 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { createDeck, updateDeck } from "../utils/api/index";
 import { useHistory, useRouteMatch } from "react-router-dom";
 
+/**
+ * Component renders the form to add and edit a deck.
+ *
+ */
 const DeckForm = ({ deck }) => {
   const initialFormData = { name: "", description: "" };
   const [formData, setFormData] = useState({ ...initialFormData });
@@ -9,12 +13,11 @@ const DeckForm = ({ deck }) => {
   const { path } = useRouteMatch();
   const abortController = new AbortController();
 
+  //If deck received from props, update form data with deck info.
   if (deck)
     useEffect(() => {
       setFormData({ ...initialFormData, ...deck });
     }, [deck]);
-
-  console.log(initialFormData, formData);
 
   const handleFormChange = ({ target }) => {
     setFormData({
@@ -22,6 +25,9 @@ const DeckForm = ({ deck }) => {
       [target.name]: target.value,
     });
   };
+
+  //On submit, check if deck received from props.
+  //If so, update the given deck, else, create new deck
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
