@@ -47,25 +47,27 @@ const CardForm = ({ card }) => {
 
   return (
     <form onSubmit={(e) => handleSubmit(e)}>
-      <label for="front">Front</label>
+      <label htmlFor="front">Front</label>
       <br />
       <textarea
         rows="3"
         type="text"
         id="front"
         name="front"
+        placeholder="Front side of card"
         className="form-control"
         value={formData.front}
         onChange={handleFormChange}
       />
       <br />
-      <label for="back">Back</label>
+      <label htmlFor="back">Back</label>
       <br />
       <textarea
         rows="3"
         type="text"
         id="back"
         name="back"
+        placeholder="Back side of card"
         className="form-control"
         value={formData.back}
         onChange={handleFormChange}

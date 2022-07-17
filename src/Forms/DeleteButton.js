@@ -34,7 +34,7 @@ const DeleteButton = ({ objectToDelete = {} }) => {
           ? deleteCard(id, abortController.signal)
           : deleteDeck(id, abortController.signal);
         const response = await deleteFunction;
-        path === "/decks/:deckId" ? history.replace("/") : history.go("/");
+        path === "/decks/:deckId" && deleteObject === "deck" ? history.replace("/") : history.go(path);
         return await response;
       } catch (error) {
         if (error.name === "AbortError") {

@@ -9,13 +9,13 @@ import DeckList from './DeckList';
 const HomeView = () => {
      return (
        <>
-         <article key="create-deck-button">
+         <article>
            <Link to="/decks/new" className="btn btn-secondary">
              <span className="material-icons">add</span>
              <span>Create Deck</span>
            </Link>
          </article>
-         <article key="deck-cards">
+         <article>
            <DeckList  />
          </article>
        </>

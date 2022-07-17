@@ -46,7 +46,7 @@ const CardList = ({ cards = [] }) => {
    */
   const formatCard = (card, { id, front, back } = card) => {
     return (
-      <div className="card" key={id}>
+      <div className="card card-bg" key={id}>
         <div className="card-body">
           <div className="container">
             <div className="row">

@@ -63,8 +63,8 @@ function DeckCards() {
   return decks.map((deck, index) => {
     const count = deck.cards.length;
     return (
-      <section id={deck.name}>
-        <div className="card m-3" key={index}>
+      <section id={deck.name} key={index}>
+        <div className="card card-bg m-3">
           <div className="card-body">
             <div className="row">
               <h2 className="col-10">{deck.name}</h2>

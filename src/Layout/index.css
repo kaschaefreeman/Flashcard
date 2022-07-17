@@ -17,3 +17,7 @@ label {
 textarea {
   overflow-y: auto;
 }
+.card-bg:hover {
+  transform: scale(1.01);
+  background-color: rgba(156, 163, 166, 0.253);
+}

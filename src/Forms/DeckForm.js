@@ -50,24 +50,26 @@ const DeckForm = ({ deck }) => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <label for="name">Name:</label>
+      <label htmlFor="name">Name:</label>
       <br />
       <input
         type="text"
         id="name"
         name="name"
+        placeholder="Deck name"
         className="form-control"
         value={formData.name}
         onChange={handleFormChange}
       />
       <br />
-      <label for="description">Description</label>
+      <label htmlFor="description">Description</label>
       <br />
       <textarea
         rows="3"
         type="text"
         id="description"
         name="description"
+        placeholder="Brief description of deck"
         className="form-control"
         value={formData.description}
         onChange={handleFormChange}
