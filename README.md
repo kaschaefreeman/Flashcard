@@ -224,6 +224,6 @@ When all cards are finished, a message is shown and the user is offered the oppo
 
 Studying a Deck with two or fewer cards will display a "Not enough cards" message and a button to add cards to the deck.
 
-![Not enough cards study screen prompt](docs/Screenshots/Final-flashcard-prompt.PNG)
+![Not enough cards study screen prompt](docs/Screenshots/Not-enough-cards-study-prompt.PNG)
 
 Clicking the **Add Cards** button should take the user to the Add Card screen
