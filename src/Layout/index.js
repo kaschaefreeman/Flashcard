@@ -19,7 +19,7 @@ function Layout() {
 
       <div className="container">
         <Switch>
-          <Route exact={true} path="/">
+          <Route exact={true} path="/flashcard-app">
             <HomeView />
           </Route>
 
