@@ -19,31 +19,34 @@ function Layout() {
 
       <div className="container">
         <Switch>
-          <Route exact={true} path="/">
+          <Route exact={true} path="/flashcard-app">
             <HomeView />
           </Route>
 
-          <Route exact={true} path="/decks/new">
+          <Route exact={true} path="/flashcard-app/decks/new">
             <CreateDeck />
           </Route>
 
-          <Route exact={true} path="/decks/:deckId">
+          <Route exact={true} path="/flashcard-app/decks/:deckId">
             <DeckInfo />
           </Route>
 
-          <Route exact={true} path="/decks/:deckId/study">
+          <Route exact={true} path="/flashcard-app/decks/:deckId/study">
             <StudyDeck />
           </Route>
 
-          <Route exact={true} path="/decks/:deckId/edit">
+          <Route exact={true} path="/flashcard-app/decks/:deckId/edit">
             <EditDeck />
           </Route>
 
-          <Route exact={true} path="/decks/:deckId/cards/new">
+          <Route exact={true} path="/flashcard-app/decks/:deckId/cards/new">
             <AddCard />
           </Route>
 
-          <Route exact={true} path="/decks/:deckId/cards/:cardId/edit">
+          <Route
+            exact={true}
+            path="/flashcard-app/decks/:deckId/cards/:cardId/edit"
+          >
             <EditCard />
           </Route>
 
