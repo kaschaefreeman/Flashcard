@@ -16,7 +16,7 @@ const HomeView = () => {
            </Link>
          </article>
          <article>
-           <DeckList  />
+           <DeckList />
          </article>
        </>
      );
