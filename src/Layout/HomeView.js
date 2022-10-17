@@ -10,7 +10,7 @@ const HomeView = () => {
      return (
        <>
          <article>
-           <Link to="/flashcard-app/decks/new" className="btn btn-secondary">
+           <Link to="/decks/new" className="btn btn-secondary">
              <span className="material-icons">add</span>
              <span>Create Deck</span>
            </Link>
